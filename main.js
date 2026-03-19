@@ -1,7 +1,29 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const getFortuneButton = document.getElementById('get-fortune');
     const fortuneResultDiv = document.getElementById('fortune-result');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        themeToggle.textContent = 'Dark Mode';
+    }
+
+    // Theme Toggle Logic
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLightMode = body.classList.contains('light-mode');
+        
+        if (isLightMode) {
+            themeToggle.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeToggle.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 
     const fortunes = [
         "오늘은 행운이 가득한 날입니다.",
@@ -26,9 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const seed = parseInt(year) + parseInt(month) + parseInt(day);
-        const randomIndex = Math.floor(Math.random() * fortunes.length);
+        // Simple pseudo-random logic based on date
+        const dateStr = `${year}${month}${day}`;
+        let hash = 0;
+        for (let i = 0; i < dateStr.length; i++) {
+            hash = ((hash << 5) - hash) + dateStr.charCodeAt(i);
+            hash |= 0;
+        }
         
+        const randomIndex = Math.abs(hash) % fortunes.length;
         fortuneResultDiv.textContent = fortunes[randomIndex];
     });
 });
