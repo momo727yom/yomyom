@@ -1,1 +1,61 @@
-/* Add styles here */
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h1 {
+    color: #bb86fc;
+}
+
+.input-container {
+    margin: 1.5rem 0;
+}
+
+input {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #bb86fc;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.2rem;
+}
+
+button {
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3700b3;
+    color: #e0e0e0;
+}
+
+#fortune-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #333;
+    border-radius: 5px;
+    min-height: 50px;
+    white-space: pre-wrap;
+}
